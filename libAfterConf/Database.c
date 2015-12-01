@@ -631,7 +631,7 @@ void ParseSingleStyle (FreeStorageElem * storage, name_list * style)
 		case DATABASE_FocusStyle_ID:
 		case DATABASE_UnfocusStyle_ID:
 		case DATABASE_StickyStyle_ID:
-			for (i = 0; i < BACK_STYLES; i++)
+			for (i = 0; i < BACK_DEFAULT; i++)
 				if (window_style_cross[i][0] == storage->term->id) {
 					char **s = &(style->window_styles[window_style_cross[i][1]]);
 

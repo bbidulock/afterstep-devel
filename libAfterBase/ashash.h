@@ -21,7 +21,7 @@ typedef union ASHashableValue
 }ASHashableValue;
 #else
 typedef unsigned long ASHashableValueBase;
-typedef const ASHashableValueBase ASHashableValue;
+typedef ASHashableValueBase ASHashableValue;
 #endif
 
 typedef union ASHashData

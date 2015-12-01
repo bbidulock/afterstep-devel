@@ -225,7 +225,7 @@ find_func_symbol (void *addr, long *offset)
 	{
 		int           i;
 		Elf64_Sym    *ptr = (Elf64_Sym *) (_ptabs.symbols + 1);
-		Elf64_Addr    addr64 = (Elf64_Addr)addr;
+		Elf64_Addr    addr64 = (Elf64_Addr)(long)addr;
 
 		for (i = 1; i < _ptabs.sym_ent_num; i++)
 		{

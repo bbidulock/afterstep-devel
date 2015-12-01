@@ -12,7 +12,7 @@ extern int select (int, fd_set *, fd_set *, fd_set *, struct timeval *);
 
 /* string manipulation */
 #ifdef __GNUC__
-extern size_t strlen (char *);
+extern size_t strlen (const char *);
 #endif
 
 #ifdef __cplusplus

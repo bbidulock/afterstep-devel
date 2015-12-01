@@ -110,6 +110,7 @@ static void asgtk_mystyle_edit_dispose (GObject * object)
 {
 	ASGtkMyStyleEdit *self = ASGTK_MYSTYLE_EDIT (object);
 
+	(void) self;
 	G_OBJECT_CLASS (mystyle_edit_parent_class)->dispose (object);
 }
 
@@ -127,11 +128,15 @@ asgtk_mystyle_edit_style_set (GtkWidget * widget, GtkStyle * prev_style)
 																													 prev_style);
 }
 
+#if 0
 static void
 on_add_inherit_mystyle_btn_clicked (GtkButton * button, gpointer user_data)
 {
 	ASGtkLookEdit *self = ASGTK_LOOK_EDIT (user_data);
+
+	(void) self;
 }
+#endif
 
 const char *MyStyleTextStyles[AST_3DTypes + 2] = { "0 - normal text",
 	"1 - embossed 3D text",
@@ -147,6 +152,7 @@ const char *MyStyleTextStyles[AST_3DTypes + 2] = { "0 - normal text",
 	NULL
 };
 
+#if 0
 static void fill_text_style_combo_box (GtkWidget * w)
 {
 	int i = 0;
@@ -156,6 +162,7 @@ static void fill_text_style_combo_box (GtkWidget * w)
 		while (MyStyleTextStyles[i])
 			gtk_combo_box_append_text (cbox, MyStyleTextStyles[i++]);
 }
+#endif
 
 
 void color2button_image (GtkImage * btn, const char *color)
@@ -541,16 +548,19 @@ asgtk_mystyle_edit_set_mystyles_list (ASGtkMyStyleEdit * self,
 	}
 }
 
+#if 0
 static void on_mystyle_overlay_clicked (GtkWidget * widget, gpointer data)
 {
 	ASGtkMyStyleEdit *self = ASGTK_MYSTYLE_EDIT (data);
 	Bool active = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget));
 
+	(void) self;
 #if 0
 	gtk_widget_set_sensitive (self->overlay_mystyle, active);
 #endif
 
 }
+#endif
 
 
 GtkWidget *create_mystyle_editor_interface (GtkWidget *
@@ -570,6 +580,10 @@ GtkWidget *asgtk_mystyle_edit_new ()
 	GtkWidget *pixmap_slice_table;
 
 
+	(void) table;
+	(void) gradient_table;
+	(void) pixmap_table;
+	(void) pixmap_slice_table;
 	colorize_gtk_widget (wself, get_colorschemed_style_normal ());
 	set_flags (self->flags, ASGTK_MYSTYLE_EDIT_ALL_VISIBLE);
 
@@ -671,6 +685,8 @@ static void
 on_add_mystyle_btn_clicked (GtkButton * button, gpointer user_data)
 {
 	ASGtkLookEdit *self = ASGTK_LOOK_EDIT (user_data);
+
+	(void) self;
 }
 
 static void
@@ -714,6 +730,8 @@ static void
 on_save_as_mystyle_btn_clicked (GtkButton * button, gpointer user_data)
 {
 	ASGtkLookEdit *self = ASGTK_LOOK_EDIT (user_data);
+
+	(void) self;
 }
 
 

@@ -1458,6 +1458,7 @@ name( const type *text, ASFont *font, ASGlyphMap *map, ASTextAttributes *attr, i
 	int w = 0, line_count = 0, line_width = 0; \
 	int i = -1, g = 0 ; \
 	ASGlyph *last_asg = NULL ; unsigned int last_gid = 0 ; \
+	(void) last_gid; \
 	do \
 	{ \
 		++i ; \
@@ -1670,6 +1671,7 @@ get_text_size_internal( const char *src_text, ASFont *font, ASTextAttributes *at
 	int last_gid = 0 ;
 
 
+	(void) last_gid;
 	apply_text_3D_type( attr->type, &offset_3d_x, &offset_3d_y );
 	if( src_text == NULL || font == NULL )
 		return False;

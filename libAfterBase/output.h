@@ -56,7 +56,7 @@ Bool show_debug( const char *file, const char *func, int line, const char *msg_f
 
 
 void nonGNUC_debugout( const char *format, ...);
-inline void nonGNUC_debugout_stub( const char *format, ...);
+void nonGNUC_debugout_stub( const char *format, ...);
 /* may be used below in case compilation problems occur.
  * Please submit a bug report if usage of any of the following generates errors on
  * your compiler . Thanks!!! */

@@ -706,10 +706,15 @@ Bool CanShutdown ()
 	return asdbus_GetCanShutdown ();
 }
 
+extern Bool asdbus_GetCanSuspend (void);
+
 Bool CanSuspend ()
 {
 	return (asdbus_GetCanSuspend ());
 }
+
+extern Bool asdbus_GetCanHibernate (void);
+
 Bool CanHibernate ()
 {
 	return (asdbus_GetCanHibernate ());
@@ -771,6 +776,8 @@ void RemapFunctions()
 	free (fname);
 }
 
+extern Bool asdbus_Suspend (int timeout);
+extern Bool asdbus_Hibernate (int timeout);
 
 Bool RequestShutdown (FunctionCode kind)
 {
@@ -788,6 +795,8 @@ Bool RequestShutdown (FunctionCode kind)
 		case F_HIBERNATE :
 			if (asdbus_GetCanHibernate ())
 				requested = asdbus_Hibernate (500);
+			break;
+		default:
 			break;
 	}
 	return requested;
@@ -811,6 +820,7 @@ static void CloseSessionRetryHandler (void *data)
 	CloseSessionClients (data != NULL);
 }
 
+extern void asdbus_UnregisterSMClient (const char *sm_client_path);
 
 void CloseSessionClients (Bool only_modules)
 {
@@ -818,6 +828,7 @@ void CloseSessionClients (Bool only_modules)
 	/* Its the end of the session and we better close all non-module windows
 	   that support the protocol. Otherwise they'll just crash when X connection goes down.
 	 */
+	(void) modules_killed;
 	show_progress ("Closing down all modules ...");
 	display_progress (True, "Closing down all modules ...");
 	/* keep datastructures operational since we could still be inside event loop */

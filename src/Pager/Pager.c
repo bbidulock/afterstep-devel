@@ -947,6 +947,7 @@ void update_pager_shape ()
 	Bool shape_cleared = False;
 	XRectangle border[4];
 
+	(void) shape_cleared;
 	if (get_flags (PagerState.flags, ASP_ReceivingWindowList))
 		return;
 
@@ -1323,6 +1324,7 @@ void redecorate_pager_desks ()
 					get_flags (Config->flags, VERTICAL_LABEL) ? FLIP_VERTICAL : 0;
 			Bool just_created = False;
 
+			(void) just_created;
 			if (!get_flags (Config->set_flags, PAGER_SET_ALIGN))
 				align = PagerState.tbar_props->align;
 			if (!get_flags (Config->set_flags, PAGER_SET_ACTIVE_BEVEL))

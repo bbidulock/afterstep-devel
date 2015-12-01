@@ -191,7 +191,7 @@ char *locate_image_file_in_path( const char *file, ASImageImportParams *iparams 
 
 	if( file )
 	{
-		filename_len = strlen(file);
+		filename_len = strlen((char *)file);
 #ifdef _WIN32
 		for( i = 0 ; iparams->search_path[i] != NULL ; ++i ) 
 			unix_path2dos_path( iparams->search_path[i] );
@@ -201,7 +201,7 @@ char *locate_image_file_in_path( const char *file, ASImageImportParams *iparams 
 		if( (realfilename = locate_image_file(file, iparams->search_path)) == NULL )
 		{
   		tmp = safemalloc( filename_len+3+1);
-			strcpy(tmp, file);
+			strcpy(tmp, (char *)file);
 		}
 		if( realfilename == NULL && !get_flags(iparams->flags, AS_IMPORT_SKIP_COMPRESSED))
 		{ /* let's try and see if appending .gz will make any difference */
@@ -319,7 +319,7 @@ void init_asimage_import_params( ASImageImportParams *iparams )
 static Bool 
 check_compressed_file_type (const char *file)
 {
-	int len = strlen (file);
+	int len = strlen ((char *)file);
 	if (len > 5 && file[len-5] == '.') {
 		if (mystrcasecmp (&file[len-4], "jpeg") == 0 || mystrcasecmp (&file[len-4], "tiff") == 0)
 			return True;
@@ -510,7 +510,7 @@ static char* thumbnail_dir = NULL;
 {
 	struct stat stbuf;
 	if (thumbnail_dir && p_thumbnail_dir
-		&& !strcmp(thumbnail_dir, p_thumbnail_dir))
+		&& !strcmp(thumbnail_dir, (char *)p_thumbnail_dir))
 		return;
 
 	if (thumbnail_dir)
@@ -523,7 +523,7 @@ static char* thumbnail_dir = NULL;
 		&& stat(p_thumbnail_dir, &stbuf) == 0
 		&& S_ISDIR(stbuf.st_mode))
 	{
-		thumbnail_dir = strdup(p_thumbnail_dir);
+		thumbnail_dir = strdup((char *)p_thumbnail_dir);
 		DEBUG_OUT("set thumbnail dir to %s", thumbnail_dir);
 	}
 }
@@ -578,14 +578,14 @@ get_thumbnail_asimage( ASImageManager* imageman, const char *file, int thumb_wid
 {
 	ASImage *im = NULL ;
 #define AS_THUMBNAIL_NAME_FORMAT2	"%ld_%s_%dx%dthumb%ld"
-	size_t len = strlen(file);
+	size_t len = strlen((char *)file);
 	char *thumbnail_name = safemalloc( len+sizeof(AS_THUMBNAIL_NAME_FORMAT2)+80 );
 
 
 
 	if (imageman && file)
 	{
-		sprintf( thumbnail_name, AS_THUMBNAIL_NAME_FORMAT2, len, file, thumb_width, thumb_height, (long) flags) ;
+		sprintf( thumbnail_name, AS_THUMBNAIL_NAME_FORMAT2, (long)len, file, thumb_width, thumb_height, (long) flags) ;
 		im = fetch_asimage(imageman, thumbnail_name );
 	}
 	
@@ -1080,7 +1080,7 @@ open_image_file( const char *path )
 	FILE *fp = NULL;
 	if ( path )
 	{
-		if ((fp = fopen (path, "rb")) == NULL)
+		if ((fp = fopen ((char *)path, "rb")) == NULL)
 			show_error("cannot open image file \"%s\" for reading. Please check permissions.", path);
 	}else
 		fp = stdin ;
@@ -1091,7 +1091,7 @@ static ASImageFileTypes
 check_image_type( const char *realfilename )
 {
 	ASImageFileTypes type = ASIT_Unknown ;
-	int filename_len = strlen( realfilename );
+	int filename_len = strlen( (char *)realfilename );
 	FILE *fp ;
 #define FILE_HEADER_SIZE	512
 
@@ -2481,7 +2481,7 @@ load_xml2ASImage( ASImageManager *imman, const char *path, unsigned int compress
 	ASImage *im = NULL ;
 
 	memset( &fake_asv, 0x00, sizeof(ASVisual) );
-	if( (slash = strrchr( path, '/' )) != NULL )
+	if( (slash = strrchr( (char *)path, '/' )) != NULL )
 		curr_path = mystrndup( path, slash-path );
 
 	if((doc_str = load_file(path)) == NULL )

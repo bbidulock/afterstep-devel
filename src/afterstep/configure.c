@@ -2371,6 +2371,7 @@ void SetBox (char *text, FILE * fd, char **arg, int *junk)
 	int x1 = 0, y1 = 0, x2 = Scr.MyDisplayWidth, y2 = Scr.MyDisplayHeight;
 	int num;
 
+	(void) num;
 	/* not a standard X11 geometry string : */
 	num = sscanf (text, "%d%d%d%d", &x1, &y1, &x2, &y2);
 

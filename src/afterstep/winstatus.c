@@ -2072,6 +2072,8 @@ void change_aswindow_desktop (ASWindow * asw, int new_desk, Bool force)
 	ASWindow **sublist;
 	int i;
 
+	(void) sublist;
+	(void) i;
 	if (AS_ASSERT (asw))
 		return;
 	if (asw->transient_owner)

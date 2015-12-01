@@ -31,6 +31,7 @@
 #include "../libAfterStep/module.h"
 #include "../libAfterConf/afterconf.h"
 
+#if defined(LOCAL_DEBUG) && !defined(NO_DEBUG_OUTPUT)
 static void print_default_gtkrc_files ()
 {
 	char **rcfiles = gtk_rc_get_default_files ();
@@ -45,6 +46,7 @@ static void print_default_gtkrc_files ()
 	} else
 		show_progress ("no GTK rcfile defined;");
 }
+#endif
 
 
 void

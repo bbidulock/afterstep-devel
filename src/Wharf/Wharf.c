@@ -1748,6 +1748,7 @@ void map_wharf_folder (ASWharfFolder * aswf, int gravity)
 	ExtendedWMHints extwm_hints;
 	ASFlagType protocols = 0;
 
+	(void) protocols;
 	set_folder_name (aswf, False);
 
 	shints.flags = USSize | PWinGravity;

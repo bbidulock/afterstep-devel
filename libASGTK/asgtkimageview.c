@@ -228,6 +228,8 @@ asgtk_imview_view_size_alloc (GtkWidget * widget,
 	int w = allocation->width - 4;
 	int h = allocation->height - 4;
 
+	(void) view_w;
+	(void) view_h;
 	view_w = GTK_WIDGET (iv->view)->requisition.width;
 	view_h = GTK_WIDGET (iv->view)->requisition.height;
 

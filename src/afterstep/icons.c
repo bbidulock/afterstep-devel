@@ -143,6 +143,9 @@ Bool rearrange_icon_iter_func (void *data, void *aux_data)
 	int *last_p_size, *last_s_size;
 
 
+	(void) placed;
+	(void) geom_size_p;
+	(void) geom_size_s;
 	Bool vertical = get_flags (Scr.Look.flags, IconsGrowVertically);
 
 

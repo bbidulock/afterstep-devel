@@ -653,6 +653,7 @@ ASWindow *bookmark2ASWindow (const char *bookmark)
 	ASWindow *asw = NULL;
 	Bool success = False;
 	ASHashData hd;
+	(void) success;
 	hd.c32 = None;
 	if (bookmark) {
 		if (get_hash_item

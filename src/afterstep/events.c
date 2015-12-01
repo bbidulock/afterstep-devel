@@ -51,6 +51,7 @@
 # include <sys/shm.h>
 # include <X11/extensions/XShm.h>
 #endif
+#include <X11/XKBlib.h>
 
 /***********************************************************************
  *  _______________________EVENT HANDLING ______________________________
@@ -713,6 +714,7 @@ void DispatchEvent (ASEvent * event, Bool deffered)
 					 event->x.xconfigure.x, event->x.xconfigure.y);
 			on_window_moveresize (event->client, event->w);
 		}else if (event->w == Scr.Root) {
+			LOCAL_DEBUG_CALLER_OUT
 					("ConfigureNotify:(RootWindow,%dx%d)",
 					 event->x.xconfigure.width, event->x.xconfigure.height);
 			setupScreenSize(&Scr);
@@ -1164,6 +1166,7 @@ void HandleClientMessage (ASEvent * event)
 		CARD32 desktop_idx, timestamp;
 		XClientMessageEvent *xcli = &(event->x.xclient);
 
+		(void) timestamp;
 		desktop_idx = xcli->data.l[0];
 		timestamp = xcli->data.l[1];
 

@@ -101,10 +101,11 @@ void do_anim_shape_blocks (void *vdata)
 #ifdef SHAPE
 	struct ASDeskAniBlocks *data = (struct ASDeskAniBlocks *)vdata;
 	XRectangle main_b = { 0, 0, Scr.MyDisplayWidth, Scr.MyDisplayHeight };
-	int ratio = MAX_MY_RND32 / LEVELS_NUM;
+	unsigned int ratio = (unsigned long) MAX_MY_RND32 / LEVELS_NUM;
 	int x_dim = Scr.MyDisplayWidth / BLOCKS_NUM;
 	int y_dim = Scr.MyDisplayHeight / data->steps;
-	int level, th;
+	int level;
+	unsigned int th;
 	unsigned char *tmp;
 
 	if (y_dim < 2)
@@ -113,8 +114,7 @@ void do_anim_shape_blocks (void *vdata)
 
 	th = MAX_MY_RND32;
 
-	level = LEVELS_NUM;
-	while (--level >= 0) {
+	for (level = LEVELS_NUM - 1; level >= 0; level--) {
 		int blocks_used;
 		int i = 0;
 

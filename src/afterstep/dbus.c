@@ -25,6 +25,7 @@
 #include <signal.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <sys/time.h>
 
 #undef HAVE_DBUS_CONTEXT
 
@@ -314,7 +315,7 @@ void asdbus_dispatch_destroy (void *data) {
     free (data);
 }
 #endif
-static _asdbus_add_match (DBusConnection *conn, const char* iface, const char* member) {
+static void _asdbus_add_match (DBusConnection *conn, const char* iface, const char* member) {
 	char match[256];
 	sprintf(match,	member?"type='signal',interface='%s',member='%s'":"type='signal',interface='%s'", iface, member);
     	DBusError error;

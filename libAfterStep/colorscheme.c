@@ -154,7 +154,7 @@ make_grad_argb (ASColorScheme * cs, int id, ARGB32 base_alpha16,
 													light_val);
 }
 
-static inline ARGB32 MAKE_ARGB32_SHADE100 (CARD32 a, int s100)
+inline ARGB32 MAKE_ARGB32_SHADE100 (CARD32 a, int s100)
 {
 	CARD32 s8 = percent2val16 (s100) >> 8;
 

@@ -223,6 +223,7 @@ void asgtk_xml_opt_list_refresh (ASGtkXmlOptList * self)
 			do {
 				xml_elem_t *curr = self->opt_list_context->current;
 
+				(void) curr;
 				LOCAL_DEBUG_OUT ("adding item \"%s\"", curr->tag);
 				gtk_list_store_append (GTK_LIST_STORE (self->tree_model), &iter);
 				gtk_list_store_set (GTK_LIST_STORE (self->tree_model), &iter,

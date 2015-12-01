@@ -179,7 +179,7 @@ write_doc_cdata( const char *cdata, int len, ASXMLInterpreterState *state )
 				fputs( "\\&", state->dest_fp );	
 			else if ( c == '\\' && state->doc_type == DocType_NROFF ) 
 				fputc( '\\', state->dest_fp );	
-			else if ( c == '' && state->doc_type == DocType_NROFF ) 
+			else if ( c == 0x0098 && state->doc_type == DocType_NROFF ) 
 				c = '~';
 			fputc( c, state->dest_fp );
 		}		   

@@ -464,6 +464,7 @@ build_main_frame(ASFileBrowserMainFrame *data)
 	return frame;
 }
 
+#if 0
 static void
 send_refresh_signal(void)
 {
@@ -480,6 +481,7 @@ send_refresh_signal(void)
 	event.data.l[4] = 0 ;
 	gdk_event_send_clientmessage_toall((GdkEvent *)&event);
 }
+#endif
 
 void
 create_main_window (void)

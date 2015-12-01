@@ -314,6 +314,7 @@ main( int argc, char **argv )
 
 	ASBiDirList *operations = create_asbidirlist( NULL );
 	
+	(void) command;
 	/* Initialize State */
 	memset( &WinCommandState, 0x00, sizeof(WinCommandState));
 	

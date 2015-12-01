@@ -39,6 +39,7 @@ FunctionCode change_func_code (const char *func_name,
 	if (IsValidFunc (new_code)
 			&& (fterm = txt2fterm (func_name, True)) != NULL)
 		fterm->id = new_code;
+	return (new_code);
 }
 
 /*************************************************************************/
